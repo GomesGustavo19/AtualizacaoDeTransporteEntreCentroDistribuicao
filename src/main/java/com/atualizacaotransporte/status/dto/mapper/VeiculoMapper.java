@@ -15,7 +15,7 @@ public class VeiculoMapper {
 
     public static VeiculoResponse toVeiculoResponse(Veiculo veiculo){
 
-        VeiculoResponse response = new VeiculoResponse(veiculo.getId(),veiculo.getAnoVeiculo(), veiculo.getPlaca(), veiculo.getChassis());
+        VeiculoResponse response = new VeiculoResponse(veiculo.getId(),veiculo.getAnoVeiculo(), veiculo.getPlaca(), veiculo.getLicenciamento());
 
         return response;
 

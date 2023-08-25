@@ -1,6 +1,7 @@
 package com.atualizacaotransporte.status.model;
 
 import jakarta.persistence.*;
+import validation.constrains.PlacaDeCaminhao;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,18 +14,19 @@ public class Veiculo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date anoVeiculo;
+    @PlacaDeCaminhao
     private String placa;
-    private String chassis;
+    private String licenciamento;
 
     @Deprecated
     public Veiculo() {
     }
 
-    public Veiculo(Integer id, Date anoVeiculo, String placa, String chassis) {
+    public Veiculo(Integer id, Date anoVeiculo, String placa, String licenciamento) {
         this.id = id;
         this.anoVeiculo = anoVeiculo;
         this.placa = placa;
-        this.chassis = chassis;
+        this.licenciamento = licenciamento;
     }
 
     public Integer getId() {
@@ -51,11 +53,11 @@ public class Veiculo implements Serializable {
         this.placa = placa;
     }
 
-    public String getChassis() {
-        return chassis;
+    public String getLicenciamento() {
+        return licenciamento;
     }
 
-    public void setChassis(String chassis) {
-        this.chassis = chassis;
+    public void setLicenciamento(String licenciamento) {
+        this.licenciamento = licenciamento;
     }
 }
