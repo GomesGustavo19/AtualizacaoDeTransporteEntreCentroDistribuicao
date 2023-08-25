@@ -1,10 +1,10 @@
-package validation.validations;
+package com.atualizacaotransporte.status.validation.validations;
 
 
 import com.atualizacaotransporte.status.exception.VeiculoException;
+import com.atualizacaotransporte.status.validation.constrains.PlacaDeCaminhao;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import validation.constrains.PlacaDeCaminhao;
 
 public class PlacaDeCaminhaoValidation implements ConstraintValidator<PlacaDeCaminhao,String> {
     @Override

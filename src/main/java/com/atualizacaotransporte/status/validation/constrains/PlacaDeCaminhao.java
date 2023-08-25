@@ -1,7 +1,7 @@
-package validation.constrains;
+package com.atualizacaotransporte.status.validation.constrains;
 
 import jakarta.validation.Constraint;
-import validation.validations.PlacaDeCaminhaoValidation;
+import com.atualizacaotransporte.status.validation.validations.PlacaDeCaminhaoValidation;
 
 import java.lang.annotation.*;
 

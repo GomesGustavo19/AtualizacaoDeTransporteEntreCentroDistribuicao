@@ -1,7 +1,7 @@
 package com.atualizacaotransporte.status.model;
 
 import jakarta.persistence.*;
-import validation.constrains.PlacaDeCaminhao;
+import com.atualizacaotransporte.status.validation.constrains.PlacaDeCaminhao;
 
 import java.io.Serializable;
 import java.util.Date;
