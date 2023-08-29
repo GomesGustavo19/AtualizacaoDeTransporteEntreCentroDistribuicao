@@ -9,9 +9,9 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = PlacaDeCaminhaoValidation.class)
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PlacaDeCaminhao {
+public @interface PlacaCarro {
 
-    String message() default "Placa Invalida";
+    String message() default "Digite uma placa valida";
 
     Class<?>[] groups() default {};
 

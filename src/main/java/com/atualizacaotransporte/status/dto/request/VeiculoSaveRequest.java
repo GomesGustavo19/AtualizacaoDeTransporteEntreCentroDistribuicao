@@ -1,31 +1,19 @@
-package com.atualizacaotransporte.status.model;
+package com.atualizacaotransporte.status.dto.request;
 
-import com.atualizacaotransporte.status.validation.constrains.PlacaCarro;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import java.util.Date;
 
-import java.io.Serializable;
+public class VeiculoSaveRequest {
 
-@Entity
-@Table(name = "veiculo")
-public class Veiculo implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Min(2010)
     private String anoVeiculo;
-    @NotBlank
-    @PlacaCarro
+
     private String placa;
     private String licenciamento;
 
-    @Deprecated
-    public Veiculo() {
+    public VeiculoSaveRequest() {
     }
 
-    public Veiculo(Integer id, String anoVeiculo, String placa, String licenciamento) {
+    public VeiculoSaveRequest(Integer id, String anoVeiculo, String placa, String licenciamento) {
         this.id = id;
         this.anoVeiculo = anoVeiculo;
         this.placa = placa;

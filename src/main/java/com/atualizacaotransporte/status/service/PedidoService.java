@@ -42,7 +42,7 @@ public class PedidoService {
 
         List<Pedido> pedidoListado = repository.findByNumeroPedido(pedido.getNumeroPedido());
 
-        if (pedidoListado != null && pedidoListado.size() >= 1) {
+        if (pedidoListado.size() == 1) {
             throw new PedidoException("Pedido Já Cadastrado");
         } else {
             pedido = repository.save(pedido);

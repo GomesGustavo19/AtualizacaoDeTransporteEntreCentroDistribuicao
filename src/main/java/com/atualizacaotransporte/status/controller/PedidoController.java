@@ -29,8 +29,8 @@ public class PedidoController {
 
     @GetMapping
     public ResponseEntity<List<PedidoResponse>> buscarPedido(@RequestBody PedidoRequest request) {
-        List<Pedido> pedidoAtualizado = service.buscarPedido(request.getNumeroPedido()).getBody();
-        List<PedidoResponse> response = PedidoMapper.toPedidoListado(pedidoAtualizado);
+        List<Pedido> buscarPedido = service.buscarPedido(request.getNumeroPedido()).getBody();
+        List<PedidoResponse> response = PedidoMapper.toPedidoListado(buscarPedido);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
 

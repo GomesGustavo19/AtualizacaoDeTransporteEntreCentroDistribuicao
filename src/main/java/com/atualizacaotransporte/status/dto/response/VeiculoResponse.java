@@ -5,15 +5,18 @@ import java.util.Date;
 public class VeiculoResponse {
 
     private Integer id;
-    private Date anoVeiculo;
+    private String anoVeiculo;
     private String placa;
-    private String chassis;
+    private String licenciamento;
 
-    public VeiculoResponse(Integer id, Date anoVeiculo, String placa, String chassis) {
+    public VeiculoResponse() {
+    }
+
+    public VeiculoResponse(Integer id, String anoVeiculo, String placa, String licenciamento) {
         this.id = id;
         this.anoVeiculo = anoVeiculo;
         this.placa = placa;
-        this.chassis = chassis;
+        this.licenciamento = licenciamento;
     }
 
     public Integer getId() {
@@ -24,11 +27,11 @@ public class VeiculoResponse {
         this.id = id;
     }
 
-    public Date getAnoVeiculo() {
+    public String getAnoVeiculo() {
         return anoVeiculo;
     }
 
-    public void setAnoVeiculo(Date anoVeiculo) {
+    public void setAnoVeiculo(String anoVeiculo) {
         this.anoVeiculo = anoVeiculo;
     }
 
@@ -40,11 +43,11 @@ public class VeiculoResponse {
         this.placa = placa;
     }
 
-    public String getChassis() {
-        return chassis;
+    public String getlicenciamento() {
+        return licenciamento;
     }
 
-    public void setChassis(String chassis) {
-        this.chassis = chassis;
+    public void setLicenciamento(String licenciamento) {
+        this.licenciamento = licenciamento;
     }
 }
