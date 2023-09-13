@@ -1,5 +1,6 @@
 package com.atualizacaotransporte.status.dto.mapper;
 
+import com.atualizacaotransporte.status.dto.request.VeiculoAtualizacaoRequest;
 import com.atualizacaotransporte.status.dto.request.VeiculoRequest;
 import com.atualizacaotransporte.status.dto.request.VeiculoSaveRequest;
 import com.atualizacaotransporte.status.dto.response.VeiculoResponse;
@@ -17,15 +18,36 @@ public class VeiculoMapper {
         return veiculo;
     }
 
+    public static Veiculo toVeiculo(VeiculoSaveRequest request) {
+        Veiculo veiculo = new Veiculo();
+        veiculo.setPlaca(request.getPlaca().toUpperCase());
+        veiculo.setAnoVeiculo(request.getAnoVeiculo());
+        veiculo.setLicenciamento(request.getLicenciamento());
+
+        return veiculo;
+    }
+
+    public static Veiculo toVeiculo(VeiculoAtualizacaoRequest request) {
+        Veiculo veiculo = new Veiculo();
+        veiculo.setId(request.getId());
+        veiculo.setPlaca(request.getPlaca().toUpperCase());
+        veiculo.setLicenciamento(request.getLicenciamento());
+        return veiculo;
+    }
+
     public static VeiculoResponse toVeiculoResponse(Veiculo veiculo) {
 
-        VeiculoResponse response = new VeiculoResponse(veiculo.getId(), veiculo.getAnoVeiculo(), veiculo.getPlaca().toUpperCase(), veiculo.getLicenciamento());
+        VeiculoResponse response = new VeiculoResponse();
+        response.setId(veiculo.getId());
+        response.setAnoVeiculo(veiculo.getAnoVeiculo());
+        response.setPlaca(veiculo.getPlaca().toUpperCase());
+        response.setLicenciamento(veiculo.getLicenciamento());
 
         return response;
 
     }
 
-    public static List<VeiculoResponse> toVeiculoListResponse(List<Veiculo> veiculoListdo) {
+    public static List<VeiculoResponse> toVeiculoResponse(List<Veiculo> veiculoListdo) {
         List<VeiculoResponse> veiculoList = new ArrayList<>();
 
         for (Veiculo veiculo : veiculoListdo) {
@@ -38,12 +60,4 @@ public class VeiculoMapper {
 
     }
 
-    public static Veiculo toVeiculoSave(VeiculoSaveRequest request) {
-        Veiculo veiculo = new Veiculo();
-        veiculo.setPlaca(request.getPlaca().toUpperCase());
-        veiculo.setAnoVeiculo(request.getAnoVeiculo());
-        veiculo.setLicenciamento(request.getLicenciamento());
-
-        return veiculo;
-    }
 }

@@ -32,23 +32,14 @@ public class VeiculoSaveRequest {
         return anoVeiculo;
     }
 
-    public void setAnoVeiculo(String anoVeiculo) {
-        this.anoVeiculo = anoVeiculo;
-    }
 
     public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
 
     public String getLicenciamento() {
         return licenciamento;
     }
 
-    public void setLicenciamento(String licenciamento) {
-        this.licenciamento = licenciamento;
-    }
 }

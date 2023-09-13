@@ -1,11 +1,13 @@
 package com.atualizacaotransporte.status.model;
 
+import com.atualizacaotransporte.status.exception.VeiculoException;
 import com.atualizacaotransporte.status.validation.constrains.PlacaCarro;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "veiculo")
@@ -52,9 +54,7 @@ public class Veiculo implements Serializable {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
+    public void setPlaca(String placa) { this.placa = placa;}
 
     public String getLicenciamento() {
         return licenciamento;

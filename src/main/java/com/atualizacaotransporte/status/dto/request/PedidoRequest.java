@@ -15,7 +15,4 @@ public class PedidoRequest {
         return numeroPedido;
     }
 
-    public void setNumeroPedido(String numeroPedido) {
-        this.numeroPedido = numeroPedido;
-    }
 }

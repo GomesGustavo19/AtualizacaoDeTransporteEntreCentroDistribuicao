@@ -7,15 +7,11 @@ public class VeiculoRequest {
 
     private String placa;
 
-    public VeiculoRequest(String placa) {
-        this.placa = placa;
+    public VeiculoRequest() {
     }
 
     public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
 }
