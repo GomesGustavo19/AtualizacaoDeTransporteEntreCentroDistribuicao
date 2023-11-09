@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/veiculo")
@@ -25,9 +26,9 @@ public class VeiculoController {
     private VeiculoService service;
 
     @GetMapping
-    public ResponseEntity<List<VeiculoResponse>> buscarVeiculo(@RequestBody @Valid VeiculoRequest request) {
-        List<Veiculo> buscarVeiculo = service.buscar(request.getPlaca()).getBody();
-        List<VeiculoResponse> response = VeiculoMapper.toVeiculoResponse(buscarVeiculo);
+    public ResponseEntity<VeiculoResponse> buscarVeiculo(@RequestBody @Valid VeiculoRequest request) {
+        Veiculo buscarVeiculo = service.buscar(request.getPlaca()).getBody();
+        VeiculoResponse response = VeiculoMapper.toVeiculoResponse(buscarVeiculo);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
 

@@ -3,13 +3,13 @@ package com.atualizacaotransporte.status.exception.response;
 import java.io.Serializable;
 import java.util.Date;
 
-public class PedidoCadastradoResponse implements Serializable {
+public class PedidoResponse implements Serializable {
 
     private Date date;
     private String message;
     private String description;
 
-    public PedidoCadastradoResponse(Date date, String message, String description) {
+    public PedidoResponse(Date date, String message, String description) {
         this.date = date;
         this.message = message;
         this.description = description;

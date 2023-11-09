@@ -1,5 +1,6 @@
 package com.atualizacaotransporte.status.model;
 
+import com.atualizacaotransporte.status.dto.response.CondutorResponse;
 import com.atualizacaotransporte.status.exception.VeiculoException;
 import com.atualizacaotransporte.status.validation.constrains.PlacaCarro;
 import jakarta.persistence.*;
@@ -22,6 +23,8 @@ public class Veiculo implements Serializable {
     @PlacaCarro
     private String placa;
     private String licenciamento;
+    @OneToOne(mappedBy = "veiculo")
+    private Condutor condutor;
 
     @Deprecated
     public Veiculo() {

@@ -42,4 +42,15 @@ public class VeiculoSaveRequest {
         return licenciamento;
     }
 
+    public void setAnoVeiculo(String anoVeiculo) {
+        this.anoVeiculo = anoVeiculo;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public void setLicenciamento(String licenciamento) {
+        this.licenciamento = licenciamento;
+    }
 }

@@ -1,7 +1,7 @@
 package com.atualizacaotransporte.status.exception.handler;
 
-import com.atualizacaotransporte.status.dto.response.PedidoResponse;
-import com.atualizacaotransporte.status.exception.response.PedidoCadastradoResponse;
+import com.atualizacaotransporte.status.dto.response.CondutorResponse;
+import com.atualizacaotransporte.status.exception.response.CondutoResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,14 +14,13 @@ import java.util.Date;
 
 @RestController
 @ControllerAdvice
-public class PedidoCadastradoCutomizacao extends ResponseEntityExceptionHandler {
-
+public class CondutorCustomizacao extends ResponseEntityExceptionHandler {
     @ExceptionHandler
-    public final ResponseEntity<PedidoCadastradoResponse> PedidoCadastradoException(Exception ex, WebRequest request){
+    public final ResponseEntity<CondutoResponse> CondutorException(Exception ex, WebRequest request){
 
-        PedidoCadastradoResponse pedidoResponse = new PedidoCadastradoResponse(new Date(),ex.getMessage(),request.getDescription(false));
+        CondutoResponse response = new CondutoResponse(new Date(), ex.getMessage(), request.getDescription(false));
 
-        return new ResponseEntity<>(pedidoResponse, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 }

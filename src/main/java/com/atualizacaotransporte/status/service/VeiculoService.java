@@ -19,22 +19,23 @@ public class VeiculoService {
     @Autowired
     private VeiculoRepository repository;
 
-    public ResponseEntity<List<Veiculo>> buscar(String placa) {
+    public ResponseEntity<Veiculo> buscar(String placa) {
 
-        List<Veiculo> veiculoPesquisado = repository.findByPlaca(placa);
+        Optional<Veiculo> veiculoPesquisado = repository.findByPlaca(placa);
+        Veiculo veiculo = new Veiculo(veiculoPesquisado.get().getId(),veiculoPesquisado.get().getAnoVeiculo(),veiculoPesquisado.get().getPlaca(),veiculoPesquisado.get().getLicenciamento());
 
-        if (veiculoPesquisado.size() == 0)
+        if (veiculoPesquisado.isEmpty())
             throw new VeiculoException("Veiculo não cadastrado: " + placa);
 
-        return new ResponseEntity<List<Veiculo>>(veiculoPesquisado, HttpStatus.OK);
+        return new ResponseEntity<Veiculo>(veiculo, HttpStatus.OK);
 
     }
 
     public ResponseEntity<Veiculo> salvar(Veiculo veiculoRequest) {
 
-        List<Veiculo> pesquisaVeiculo = repository.findByPlaca(veiculoRequest.getPlaca());
+        Optional<Veiculo> pesquisaVeiculo = repository.findByPlaca(veiculoRequest.getPlaca());
 
-        if (pesquisaVeiculo.size() == 1) {
+        if (pesquisaVeiculo.isPresent()) {
             throw new VeiculoException("Veiculo ja cadastrado: " + veiculoRequest.getPlaca().toUpperCase());
         } else {
             veiculoRequest = repository.save(veiculoRequest);
