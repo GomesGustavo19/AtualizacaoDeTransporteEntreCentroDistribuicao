@@ -1,5 +1,6 @@
 package com.atualizacaotransporte.status.dto.request;
 
+import com.atualizacaotransporte.status.dto.response.VeiculoResponse;
 import com.atualizacaotransporte.status.model.Veiculo;
 
 import java.util.Date;
@@ -12,15 +13,15 @@ public class CondutorRequest {
     private String registroCnh;
     private Date vencCnh;
     private Date vencToxicologico;
-    private String placa;
+    private Integer veiculo_id;
 
-    public CondutorRequest(Integer id, String nome, String registroCnh, Date vencCnh, Date vencToxicologico, String placa) {
+    public CondutorRequest(Integer id, String nome, String registroCnh, Date vencCnh, Date vencToxicologico, Integer veiculo_id) {
         this.id = id;
         this.nome = nome;
         this.registroCnh = registroCnh;
         this.vencCnh = vencCnh;
         this.vencToxicologico = vencToxicologico;
-        this.placa = placa;
+        this.veiculo_id = veiculo_id;
     }
 
     public Integer getId() {
@@ -63,11 +64,11 @@ public class CondutorRequest {
         this.vencToxicologico = vencToxicologico;
     }
 
-    public String getPlaca() {
-        return placa;
+    public Integer getVeiculo_id() {
+        return veiculo_id;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setVeiculo_id(Integer veiculo_id) {
+        this.veiculo_id = veiculo_id;
     }
 }

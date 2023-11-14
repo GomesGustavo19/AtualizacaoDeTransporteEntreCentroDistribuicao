@@ -31,7 +31,7 @@ public class CondutorMapper {
         condutor.setRegistroCnh(request.getRegistroCnh());
         condutor.setVencCnh(request.getVencCnh());
         condutor.setVencToxicologico(request.getVencToxicologico());
-        condutor.setPlaca(request.getPlaca().toUpperCase());
+        condutor.setVeiculo(VeiculoMapper.toVeiculo(request.getVeiculo_id()));
 
         return condutor;
     }
@@ -48,7 +48,9 @@ public class CondutorMapper {
 
     }
     public static CondutorAtualizadoResponse toCondutorAtualizadoResponse(Condutor condutor) {
+
         CondutorAtualizadoResponse response = new CondutorAtualizadoResponse();
+
         response.setId(condutor.getId());
         response.setNome(condutor.getNome());
         response.setRegistroCnh(condutor.getRegistroCnh());

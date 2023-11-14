@@ -21,6 +21,12 @@ public class VeiculoMapper {
         return veiculo;
     }
 
+    public static Veiculo toVeiculo(Integer request_id) {
+        Veiculo veiculo = new Veiculo();
+        veiculo.setId(request_id);
+        return veiculo;
+    }
+
     public static Veiculo toVeiculo(VeiculoAtualizacaoRequest request) {
         Veiculo veiculo = new Veiculo();
         veiculo.setId(request.getId());

@@ -26,12 +26,18 @@ public class CondutorService {
     @Autowired
     private VeiculoService veiculoService;
 
-    public ResponseEntity<List<Condutor>> buscar(String registro){
+    public ResponseEntity<Condutor> buscar(String registro) {
 
         if (registro.isBlank())
             throw new CondutorException("Digiete um registro valido");
 
+        /*
+
         List<Condutor> condutorPesquisado = repository.findByRegistroCnh(registro).stream().toList();
+
+         */
+
+        Condutor condutorPesquisado = repository.findByCondutor(registro);
 
         return new ResponseEntity<>(condutorPesquisado, HttpStatus.OK);
 
@@ -39,7 +45,7 @@ public class CondutorService {
 
     public ResponseEntity<Condutor> salvar(Condutor condutor) {
 
-        List<Condutor> pesquisa = buscar(condutor.getRegistroCnh()).getBody();
+        List<Condutor> pesquisa = repository.findByRegistroCnh(condutor.getRegistroCnh()).stream().toList();
 
         if (pesquisa.size() == 1)
             throw new CondutorException("Condutor ja cadastrado! " + condutor.getRegistroCnh());
@@ -49,9 +55,6 @@ public class CondutorService {
             return new ResponseEntity<>(condutor, HttpStatus.CREATED);
         }
 
-        Veiculo veiculoPesquisado = veiculoService.buscar(condutor.getPlaca()).getBody();
-
-        condutor.setVeiculo(veiculoPesquisado);
 
         condutor = repository.save(condutor);
 
@@ -61,38 +64,29 @@ public class CondutorService {
 
     public ResponseEntity<Condutor> atualizar(Condutor condutor) {
 
-        if (condutor.getPlaca() == null)
+        if (condutor.getVeiculo() == null)
             throw new VeiculoException("Digite um placa valido");
 
         if (condutor.getId() == null)
             throw new CondutorException("Digite um condutor_id valido");
 
 
+        /*
         Veiculo veiculoPesquisado = veiculoService.buscar(condutor.getPlaca()).getBody();
 
-        if (condutor.getVeiculo().equals(veiculoPesquisado)) {
-            buscar(condutor.getRegistroCnh()).getBody().stream().map(condutorAtualizado -> {
-                condutorAtualizado.setNome(condutor.getNome());
-                condutorAtualizado.setRegistroCnh(condutor.getRegistroCnh());
-                condutorAtualizado.setVencCnh(condutor.getVencCnh());
-                condutorAtualizado.setVencToxicologico(condutor.getVencToxicologico());
-                condutorAtualizado.setVeiculo(veiculoPesquisado);
-                Condutor update = repository.saveAndFlush(condutorAtualizado);
-                return new ResponseEntity<>(update, HttpStatus.OK);
 
-            });
-        }else {
-            buscar(condutor.getRegistroCnh()).getBody().stream().map(condutorAtualizado -> {
-                condutorAtualizado.setNome(condutor.getNome());
-                condutorAtualizado.setRegistroCnh(condutor.getRegistroCnh());
-                condutorAtualizado.setVencCnh(condutor.getVencCnh());
-                condutorAtualizado.setVencToxicologico(condutor.getVencToxicologico());
-                Condutor update = repository.saveAndFlush(condutorAtualizado);
-                return new ResponseEntity<>(update, HttpStatus.OK);
 
-            });
+        buscar(condutor.getRegistroCnh()).getBody().stream().map(condutorAtualizado -> {
+            condutorAtualizado.setNome(condutor.getNome());
+            condutorAtualizado.setRegistroCnh(condutor.getRegistroCnh());
+            condutorAtualizado.setVencCnh(condutor.getVencCnh());
+            condutorAtualizado.setVencToxicologico(condutor.getVencToxicologico());
+            Condutor update = repository.saveAndFlush(condutorAtualizado);
+            return new ResponseEntity<>(update, HttpStatus.OK);
 
-        }
+
+        });
+        */
 
         return ResponseEntity.notFound().build();
     }

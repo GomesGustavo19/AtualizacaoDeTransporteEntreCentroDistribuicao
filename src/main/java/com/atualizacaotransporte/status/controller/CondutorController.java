@@ -24,30 +24,32 @@ public class CondutorController {
     private CondutorService service;
 
     @PostMapping
-    public ResponseEntity<?> salvar(@RequestBody @Valid CondutorRequest request) {
+    public ResponseEntity<String> salvar(@RequestBody @Valid CondutorRequest request) {
 
-        if (request.getPlaca() == null) {
+        if (request.getVeiculo_id() == null) {
             Condutor modelo = CondutorMapper.toCondutor(request);
             Condutor modeloSalvo = service.salvar(modelo).getBody();
-            CondutorResponse response = CondutorMapper.toCondutorResponse(modeloSalvo);
 
-            return new ResponseEntity<>(response, HttpStatus.CREATED);
+            String text = "Condutor " + modeloSalvo.getNome() + " salvo com sucesso";
+
+            return new ResponseEntity<>(text, HttpStatus.CREATED);
 
         }
 
         Condutor modelo = CondutorMapper.toCondutorCaminhao(request);
         Condutor modeloSalvo = service.salvar(modelo).getBody();
-        CondutorAtualizadoResponse response = CondutorMapper.toCondutorAtualizadoResponse(modeloSalvo);
 
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        String text = "Condutor " + modeloSalvo.getNome() + " salvo com sucesso";
+
+        return new ResponseEntity<>(text, HttpStatus.CREATED);
 
     }
 
     @GetMapping
-    public ResponseEntity<List<CondutorAtualizadoResponse>> buscar(@RequestBody @Valid CondutorFindRequest request){
+    public ResponseEntity<CondutorAtualizadoResponse> buscar(@RequestBody @Valid CondutorFindRequest request){
 
-        List<Condutor> condutor = service.buscar(request.getRegistroCnh()).getBody();
-        List<CondutorAtualizadoResponse> condutorResponseList = CondutorMapper.toCondutorResponse(condutor);
+        Condutor condutor = service.buscar(request.getRegistroCnh()).getBody();
+        CondutorAtualizadoResponse condutorResponseList = CondutorMapper.toCondutorAtualizadoResponse(condutor);
 
         return new ResponseEntity<>(condutorResponseList, HttpStatus.OK);
 

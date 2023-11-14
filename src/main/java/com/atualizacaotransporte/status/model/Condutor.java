@@ -26,8 +26,6 @@ public class Condutor implements Serializable {
     @OneToOne
     @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
-    @Pattern(regexp = "[A-Z]{3}[0-9][0-9A-Z][0-9]{2}")
-    private String placa;
 
     @Deprecated
     public Condutor() {
@@ -97,11 +95,4 @@ public class Condutor implements Serializable {
         this.veiculo = veiculo;
     }
 
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
 }
